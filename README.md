@@ -8,3 +8,5 @@
 
 * [markdown](https://github.com/teqn99/TIL/tree/master/markdown)
 
+* [python](https://github.com/teqn99/TIL/tree/master/python)
+
