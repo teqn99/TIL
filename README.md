@@ -10,3 +10,5 @@
 * [python](https://github.com/teqn99/TIL/tree/master/1.%20python)
 * [web](https://github.com/teqn99/TIL/tree/master/2.%20web)
 
+- [algorithm](https://github.com/teqn99/TIL/tree/master/algorithm)
+
