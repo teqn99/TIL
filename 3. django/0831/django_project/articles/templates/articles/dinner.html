@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>오늘의 메뉴는 {{ pick }} 입니다.</h1>
+    <p>{{ no|default:'nothing' }}</p>
+    <ul>
+        {% for food in foods %}
+            <li>{{ food|upper }}</li>
+        {% endfor %}
+    </ul>
+
+    {% comment %} 파이썬의 join이랑 똑같은 기능 수행 {% endcomment %}
+    <p>{{ foods|join:", " }}</p>
+
+{% endblock content %}
