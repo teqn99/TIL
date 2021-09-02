@@ -1,13 +1,12 @@
-from articles.admin import ArticleAdmin
-from .models import Article
-from django.shortcuts import render, redirect
+import articles
+from articles.models import Article
+from django.shortcuts import redirect, render
 
 # Create your views here.
 def index(request):
-    articles = Article.objects.all()[::-1]  # 역순으로 정렬
-    # articles = Article.objects.order_by('-id')  # orm으로 순서 변경
+    articles = Article.objects.all()
     context = {
-        'articles': articles
+        'articles': articles,
     }
 
     return render(request, 'articles/index.html', context)
@@ -30,9 +29,9 @@ def create(request):
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
     context = {
-        'article': article
+        'article': article,
     }
-
+    
     return render(request, 'articles/detail.html', context)
 
 
@@ -43,14 +42,14 @@ def delete(request, pk):
         return redirect('articles:index')
     else:
         return redirect('articles:detail', article.pk)
-    
+
 
 def edit(request, pk):
     article = Article.objects.get(pk=pk)
     context = {
         'article': article,
     }
-    
+
     return render(request, 'articles/edit.html', context)
 
 
