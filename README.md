@@ -12,3 +12,8 @@
 
 - [algorithm](https://github.com/teqn99/TIL/tree/master/algorithm)
 
+- [django](https://github.com/teqn99/TIL/tree/master/3.%20django)
+  - [Django Secret Key exposed on GitHub]()
+
+
+
