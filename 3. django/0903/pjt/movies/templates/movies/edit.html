@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 style="margin-top:50px; margin-bottom:30px">EDIT</h3>
+    <form action="{% url 'movies:update' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Movie Title</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{ movie.title }}">
+        </div>
+        <div class="mb-3">
+            <label for="overview" class="form-label">Overview</label>
+            <textarea class="form-control" name="overview" id="overview" rows="3">{{ movie.overview }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="poster_path" class="form-label">Poster Path</label>
+            <input type="text" class="form-control" name="poster_path" id="poster_path" value="{{ movie.poster_path }}">
+        </div>
+        <button type="submit" class="btn btn-secondary">Write</button>
+    </form>
+
+{% endblock content %}

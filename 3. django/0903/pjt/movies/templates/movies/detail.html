@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 class="text-center" style="margin-top:50px; margin-bottom:30px">DETAIL</h3>
+    <img src="{{ movie.poster_path }}" alt="wrong link" class="img-fluid mx-auto d-block"><hr>
+    <h4>Title</h4>
+    <p>{{ movie.title }}</p><hr>
+    <h4>Overview</h4>
+    <p>{{ movie.overview }}</p><hr>
+
+    <button type="submit" class="btn btn-secondary" onclick="location.href='{% url 'movies:edit' movie.pk %}' ">Edit</button>
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete</button>
+    </form>
+
+    <h1 style="margin-top:50px; margin-bottom:30px"></h1>  
+
+{% endblock content %}

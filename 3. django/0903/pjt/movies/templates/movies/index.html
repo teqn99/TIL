@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center" style="margin-top:50px; margin-bottom:30px">MAIN</h1>   
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for movie in movies %}
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{% url 'movies:detail' movie.pk %}">
+                        <img src="{{ movie.poster_path }}" class="card-img-top" alt="No image">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold;">{{ movie.title }}</h5>
+                        <p class="card-text">
+                            <div style="width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                            {{ movie.overview }}
+                            </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h1 style="margin-top:50px; margin-bottom:30px"></h1>  
+
+{% endblock content %}
