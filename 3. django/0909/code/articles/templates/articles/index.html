@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <h1>articles index</h1>
+    <img src="{% static 'articles/cs.png' %}" alt="">
+    <br>
+    <a href="{% url 'articles:create' %}">[CREATE]</a>
+    <hr>
+    {% for article in articles %}
+        <h2>{{ article.pk }}</h2>
+        <h3>제목: {{ article.title }}</h3>
+        <a href="{% url 'articles:detail' article.pk %}">[DETAIL]</a>
+        <hr>
+    {% endfor %}
+
+{% endblock content %}
