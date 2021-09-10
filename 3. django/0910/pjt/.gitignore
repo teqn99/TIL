@@ -8,7 +8,7 @@
 *.pyc
 __pycache__/
 local_settings.py
-# db.sqlite3
+db.sqlite3
 db.sqlite3-journal
 media
 
@@ -267,5 +267,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+secret.json
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,django,venv
