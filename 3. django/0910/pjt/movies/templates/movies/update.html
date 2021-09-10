@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block nav %}
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'movies:index' %}">Main Page</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'movies:create' %}">New</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'movies:create' %}">Detail</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled active" href="{% url 'movies:create' %}">Update</a>
+        </li>
+    </ul>
+{% endblock nav %}
+
+
+{% block content %}
+  <h1 class="text-center mt-3 mb-5">UPDATE</h1>
+  <form action="{% url 'movies:update' movie.pk %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary" type="submit" value="수정">
+    <a class="btn btn-outline-secondary" href="{% url 'movies:detail' movie.pk %}" role="button">BACK</a>
+  </form>
+{% endblock content %}

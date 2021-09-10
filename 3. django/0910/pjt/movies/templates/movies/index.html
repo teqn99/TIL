@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'movies:index' %}">Main Page</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'movies:create' %}">New</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'movies:create' %}">Detail</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="{% url 'movies:create' %}">Update</a>
+        </li>
+    </ul>
+{% endblock nav %}
+
+
+{% block content %}
+    <h1 class="text-center mt-3 mb-5">Movies</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for movie in movies %}
+        <div class="col">
+            <div class="card h-100">
+                <a href="{% url 'movies:detail' movie.pk %}">
+                    <img src="{{ movie.poster_path }}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.overview }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock content %}
