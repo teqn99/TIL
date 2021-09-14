@@ -15,5 +15,7 @@
 - [django](https://github.com/teqn99/TIL/tree/master/3.%20django)
   - [Django Secret Key exposed on GitHub](https://github.com/teqn99/TIL/blob/master/3.%20django/Django-Secret_Key-exposed-on-GitHub.md)
 
+- [db](https://github.com/teqn99/TIL/tree/master/4.%20db)
+
 
 
