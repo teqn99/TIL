@@ -2,13 +2,13 @@
 {% load bootstrap5 %}
 
 {% block content %}
-    <h1>UPDATE</h1>
+    <h1 class="text-center mt-5 mb-5">UPDATE</h1>
     <form action="{% url 'community:update' community.pk %}" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button>[UPDATE]</button>
+        <button class="btn btn-primary">UPDATE</button>
     </form>
     <hr>
-    <a href="{% url 'community:index' %}">[BACK]</a>
+    <a class="btn btn-outline-secondary" href="{% url 'community:index' %}">BACK</a>
 
 {% endblock content %}

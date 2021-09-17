@@ -1,15 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>COMMUNITY MAIN</h1>
+    <h1 class="text-center mt-5 mb-5">COMMUNITY MAIN</h1>
 
-    {% for community in communities %}
-        <h3>{{ community.pk }}</h3>
-        <h5>{{ community.movie_title }}</h5>
-        <button class="btn btn-primary" onclick = "location.href = '{% url 'community:detail' community.pk %}' ">
-            DETAIL
-        </button>
-        <hr>
-    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Movie Title</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for community in communities %}
+                <tr>
+                <th scope="row">{{ community.pk }}</th>
+                <td>{{ community.rank }}</td>
+                <td>{{ community.movie_title }}</td>
+                <td>
+                <button class="btn btn-primary" onclick = "location.href = '{% url 'community:detail' community.pk %}' ">
+                    DETAIL
+                </button>
+                </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
 
 {% endblock content %}
