@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>COMMUNITY MAIN</h1>
+
+    {% for community in communities %}
+        <h3>{{ community.pk }}</h3>
+        <h5>{{ community.movie_title }}</h5>
+        <button class="btn btn-primary" onclick = "location.href = '{% url 'community:detail' community.pk %}' ">
+            DETAIL
+        </button>
+        <hr>
+    {% endfor %}
+
+{% endblock content %}

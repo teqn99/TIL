@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>DETAIL</h1>
+
+    <h3>Movie title: {{ community.movie_title }}</h3>
+    <h3>Title: {{ community.title }}</h3>
+    <h4>Rank: {{ community.rank }}</h4>
+    <p>Content: {{ community.content }}</p>
+    <hr>
+
+    <form action="{% url 'community:delete' community.pk %}" method="POST">
+        {% csrf_token %}
+        <a class="btn btn-primary" href="{% url 'community:update' community.pk %}" role="button">UPDATE</a>
+        <button class="btn btn-danger" type="submit">DELETE</button>
+        <a class="btn btn-outline-secondary" href="{% url 'community:index' %}" role="button">BACK</a>
+    </form>
+
+
+{% endblock content %}
