@@ -1,0 +1,40 @@
+<h2>{{ person.username }}'s followings / followers info.</h2>
+
+  <div class="jumbotron text-center text-white bg-dark">
+    <p class="lead mb-1">작성자 정보</p>
+    <h2 class="display-4">{{ person.username }}</h2>
+    <hr>
+    
+    <p class="lead">
+      followings: {{ person.followings.all|length }} / followers: {{ person.followers.all|length }}
+    </p>
+
+    {% comment %} 팔로우 버튼 {% endcomment %}
+    {% if request.user != person %}
+      {% comment %} 스스로는 팔로우 할 수 없음 {% endcomment %}
+      <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+        {% csrf_token %}
+        {% if request.user in person.followers.all %}
+          <button class="btn-secondary btn-lg">Unfollow</button>
+        {% else %}
+          <button class="btn-primary btn-lg">Follow</button>
+        {% endif %}
+      </form>
+    {% endif %}
+
+    <div>
+      <div>
+        팔로잉 유저:
+        {% for following in person.followings.all %}
+          {{ following }}
+        {% endfor %}
+      </div>
+      <div>
+        팔로워 유저:
+        {% for follower in person.followers.all %}
+          {{ follower }}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
