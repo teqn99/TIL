@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>DETAIL # {{ review.pk }}</h2>
+  <hr>
+  <p>title : {{ review.title }}</p>
+  <p>content : {{ review.content }}</p>
+  <p>create time : {{ review.created_at }}</p>
+  <p>update time : {{ review.updated_at }}</p>
+  <hr>
+  {% if user == review.user %}
+    <a href="{% url 'community:update' review.pk %}">[UPDATE]</a>
+    <form action="{% url 'community:delete' review.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="DELETE">
+    </form>
+  {% endif %}
+  <a href="{% url 'community:index' %}">[Back]</a>
+  <hr>
+  <h4>Comments</h4>
+  {% if comments %}
+    <p><b>{{ comments|length }} comments here</b></p>
+  {% endif %}
+  <ul>
+    {% for comment in comments %}
+      <li>
+        {{ comment.user }} - {{ comment.content }}
+        {% if request.user == comment.user %}
+          <form action="{% url 'community:comments_delete' review.pk comment.pk %}" method="POST" class="d-inline">
+            {% csrf_token %}
+            <input type="submit" value="DELETE">
+          </form>
+        {% endif %}
+      </li>
+    {% empty %}
+      <p>No comment</p>
+    {% endfor %}
+  </ul>
+
+  <hr>
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'community:comments_create' review.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form }}
+      <input type="submit">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">[If you want to write comment, Login first.]</a>
+  {% endif %}
+{% endblock content %}

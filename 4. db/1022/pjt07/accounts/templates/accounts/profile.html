@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% comment %} 팔로워/팔로잉 목록 추가 점보트론 요소 불러오기 {% endcomment %}
+  {% include 'accounts/_follow.html' %}
+
+  <hr>
+  <h2>{{ person.username }}'s contents</h2>
+    {% for article in person.review_set.all %}
+      <div>
+        <a href="{% url 'community:detail' article.pk %}">{{ article.title }}</a>, Likes: {{ article.like_users.all|length }}
+      </div>
+    {% endfor %}
+  <hr>
+  <h2>{{ person.username }}'s comments</h2>
+    {% for comment in person.comment_set.all %}
+      <div>
+        {{ comment.content }} from <a href="{% url 'community:detail' comment.review.pk %}">{{ comment.review.title }}</a>
+      </div>
+    {% endfor %}
+  <hr>
+  <h2>{{ person.username }}'s likes</h2>
+    {% for article in person.review_like.all %}
+      <div>
+        <a href="{% url 'community:detail' article.pk %}">{{ article.title }}</a>
+      </div>
+    {% endfor %}
+  <hr>
+  <a href="{% url 'community:index' %}">Back</a>
+
+{% endblock content %}

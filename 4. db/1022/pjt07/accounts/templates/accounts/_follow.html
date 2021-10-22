@@ -1,0 +1,48 @@
+  <div class="jumbotron text-center text-white bg-dark">
+    <h2 class="display-4">{{ person.username }}</h2>
+    <hr>
+    
+    <p class="lead">
+      followings: {{ person.followings.all|length }} / followers: {{ person.followers.all|length }}
+    </p>
+
+    {% comment %} 팔로우 버튼 {% endcomment %}
+    {% if request.user != person %}
+      {% comment %} 스스로는 팔로우 할 수 없음 {% endcomment %}
+      <form action="{% url 'accounts:follow' person.username %}" method="POST">
+        {% csrf_token %}
+        {% if request.user in person.followers.all %}
+          <button class="btn-secondary btn-lg">Unfollow</button>
+        {% else %}
+          <button class="btn-primary btn-lg">Follow</button>
+        {% endif %}
+      </form>
+    {% endif %}
+
+    <div>
+      <div>
+        following users:
+        {% for following in person.followings.all %}
+          <a href="{% url 'accounts:profile' following.username %}">{{ following }}</a>
+        {% endfor %}
+      </div>
+      <div>
+        follower users:
+        {% for follower in person.followers.all %}
+          <a href="{% url 'accounts:profile' follower.username %}">{{ follower }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if request.user == person %}
+    <form action="{% url 'accounts:logout' %}" method="POST" style="display:inline">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+    <form action="{% url 'accounts:delete' %}" method="POST" style="display:inline">
+      {% csrf_token %}
+      <input type="submit" value="Delete Account">
+    </form>
+    {% endif %}
+
+  </div>
