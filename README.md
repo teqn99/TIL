@@ -11,11 +11,10 @@
 * [web](https://github.com/teqn99/TIL/tree/master/2.%20web)
 
 - [algorithm](https://github.com/teqn99/TIL/tree/master/algorithm)
-
 - [django](https://github.com/teqn99/TIL/tree/master/3.%20django)
   - [Django Secret Key exposed on GitHub](https://github.com/teqn99/TIL/blob/master/3.%20django/Django-Secret_Key-exposed-on-GitHub.md)
-
 - [db](https://github.com/teqn99/TIL/tree/master/4.%20db)
+- [javascript](https://github.com/teqn99/TIL/tree/master/5.%20javascript)
 
 
 
