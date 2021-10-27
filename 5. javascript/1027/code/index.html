@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .txt-blue {color: blue;}
+        .txt-red {color: red;}
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li class="txt-blue">1번</li>
+        <li class="txt-blue">2번</li>
+        <li class="txt-blue">3번</li>
+        <li class="txt-blue">4번</li>
+        <li class="txt-blue">5번</li>
+        <li class="txt-blue">6번</li>
+    </ul>
+
+    <script>
+        // getElements와 querySelector의 비교
+        
+        // // getElements의 경우
+        // const $li = document.getElementsByClassName('txt-blue');
+        // for (let i = 0; i < $li.length; i++) {
+        //     console.log($li[i])
+        //     $li[i].className = 'txt-red'
+        //     // i가 0, 2, 4의 경우에만 console.log($li[i])가 출력되고, txt-red가 적용됐다!!
+        //     // -> i가 0인 경우, 처음꺼가 red가 됨 -> $li에서 첫번째 거가 삭제된 셈 -> $li가 2,3,4,5,6만 갖는 리스트가 됨
+        //     // -> 그렇기 때문에 다음 자리인 i가 1인 경우 -> 3번의 자리를 red처리 -> $li가 2,4,5,6만 갖는 리스트가 됨
+        //     // -> 같은 방법으로 i가 2인 경우가 됨 -> 5번의 자리를 red 처리 -> $li가 2, 4, 6만 갖는 리스트가 됨
+        //     // -> for문 종료
+        // }
+
+        // querySelector의 경우
+        const $li = document.querySelectorAll('.txt-blue')
+        for (let i = 0; i < $li.length; i++) {
+            console.log($li[i])
+            $li[i].className = 'txt-red'
+            // Good!!!
+        }
+    </script>
+</body>
+</html>

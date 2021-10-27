@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-CR</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text">
+        <button>Add</button>
+    </form>
+    <ul>
+        
+    </ul>
+
+    <script>
+        const form = document.querySelector('form')
+
+        const addTodo = function (event) {
+            event.preventDefault()  // submit 기본 event 방지로 url변경 막기
+            
+            console.log(event)
+
+            // 1. input 선택 및 value 값 선택
+            const input = document.querySelector('input')
+            const content = input.value
+
+            if (content.trim()) { // content의 양쪽 공백을 제거했는데, 글자가 남은 경우
+                // 2. 입력을 통해 list 생성
+                const liTag = document.createElement('li')
+                liTag.innerText = content
+    
+                const ulTag = document.querySelector('ul')
+                ulTag.appendChild(liTag)
+            } else { // 글자가 없는 경우
+                alert('할 일을 입력해주세요!!')
+            }
+
+            event.target.reset()  // event의 target 비우기
+        }
+
+        form.addEventListener('submit', addTodo)
+
+    </script>
+</body>
+</html>
