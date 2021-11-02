@@ -73,11 +73,24 @@
         const followed = response.data.followed
 
         const followButton = document.querySelector(`#follow-${personId}`)
+        /*
         if (followed) {
           followButton.innerText = '언팔로우'
         } else {
           followButton.innerText = '팔로우'
         }
+        */
+
+        // followButton.classList.toggle('btn-secondary')
+        // followButton.classList.toggle('btn-primary')
+        if (followed) {
+          followButton.innerText = '언팔로우'
+          followButton.setAttribute('class', 'btn-secondary')
+        } else {
+          followButton.innerText = '팔로우'
+          followButton.setAttribute('class', 'btn-primary')
+        }
+
         const followersCount = document.querySelector(`#followers-count-${personId}`)
         const followingsCount = document.querySelector(`#followings-count-${personId}`)
         followersCount.innerText = followers_count
