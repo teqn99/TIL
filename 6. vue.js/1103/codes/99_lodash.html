@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    console.log('-----------------1. reverse---------------')
+    //1. reverse - Vanilla O
+    // Vanilla
+    const array1 = [1, 2, 3, 4]
+    const reversedArray1 = array1.reverse()
+    console.log(reversedArray1)
+
+    // Lodash
+    const array2 = [1, 2, 3, 4]
+    const reversedArray2 = _.reverse(array2)
+    console.log(reversedArray2)
+
+
+    console.log('-----------------2. sort---------------')
+    //2. sort - Weird Operation in Vanilla 
+    // Vanilla 
+    const numbers1 = [10, 1, 3, 7, 4]
+    numbers1.sort()
+    console.log(numbers1)
+    // 결과 : [1, 10, 3, 4, 7]
+
+    // Lodash
+    const numbers2 = [10, 1, 3, 7, 4]
+    const numbers2Sorted = _.sortBy(numbers2)
+    console.log(numbers2Sorted)
+    // 결과 : [1, 3, 4, 7, 10]
+
+    
+    console.log('-----------------3-1. range---------------')
+    //3. range - Vanilla에는 없음
+    // Lodash
+    const num1 = _.range(4)
+    console.log(num1)
+    // 결과 : [0, 1, 2, 3]
+
+    console.log('-----------------3-2. random---------------')
+    //3-2. random - Vanilla ?
+    // Lodash
+    const randomNums = _.random(0, 5)
+    console.log(randomNums)  // 0 ~ 5 사이의 값이 랜덤으로 출력됨
+
+    console.log('-----------------3-3. sampleSize---------------')
+    //3-3. sampleSize - Vanilla ?
+    // Lodash
+    const result = _.sampleSize([1, 2, 3, 4, 5, 6, 7, 8], 3)
+    console.log(result)  // [1, 2, 3, 4, 5, 6, 7, 8] 중 3개 랜덤 출력
+
+    const sortedResult = _.sortBy(result)
+    console.log(sortedResult)
+  </script>
+</body>
+</html>
