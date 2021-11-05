@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Detail</h2>
+    <div class="card mb-3">
+        <img src="{{ movie.poster_path }}" class="card-img-top" alt="movie poster">
+        <div class="card-body">
+            <h3 class="card-title">{{ movie.title }}</h3>
+            <hr>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Genres:
+                    {% for genre in movie.genres.all %}
+                        <{{ genre.name }}>
+                    {% endfor %}
+                </li>
+                <li class="list-group-item">Popularity: {{ movie.popularity }} </li>
+                <li class="list-group-item">Vote Count: {{ movie.vote_count}}</li>
+                <li class="list-group-item">Vote Average: {{ movie.vote_average }}</li>
+            </ul>
+            <hr>
+            <p class="card-text">{{ movie.overview }}</p>
+            <hr>
+            <p class="card-text"><small class="text-muted">{{ movie.release_date }}</small></p>
+        </div>
+    </div>
+
+{% endblock %}

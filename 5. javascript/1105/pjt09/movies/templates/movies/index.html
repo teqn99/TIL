@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Movies</h1>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for movie in movies %}
+      <div class="col">
+        <div class="card h-100">
+          <a href="{% url 'movies:detail' movie.pk %}">
+            <img src="{{ movie.poster_path }}" class="card-img-top" alt="movie image">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.title }}</h5>
+            {% comment %} {% if movie.overview|length > 100 %}
+              <p class= "card-text">{{ movie.overview }}...</p>
+            {% else %}
+              <p class= "card-text">{{ movie.overview }}</p>
+            {% endif %} {% endcomment %}
+            <p class= "card-text" style="display:-webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow:hidden; text-overflow: ellipsis; word-wrap:break-word; line-height: 1.2em; height: 3.6em;">{{ movie.overview }}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{ movie.release_date }}</small>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

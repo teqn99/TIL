@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% comment %} <input type="text"> {% endcomment %}
+    <form action="{% url 'movies:result' %}" method="GET">
+        <label for="title">영화 제목: </label>
+        <input type="text" id="title" name="keyword">
+        <input type="submit">
+    </form>
+
+{% endblock %}

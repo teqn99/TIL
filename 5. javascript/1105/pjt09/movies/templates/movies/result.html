@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ keyword }}와 관련된 추천 영화</h1>
+    {% for r in recommend.title %}
+        <p>- {{ r }} </p>
+    {% endfor %}
+{% endblock content %}
+
